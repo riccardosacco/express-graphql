@@ -2,20 +2,11 @@ import express from "express";
 
 import { ApolloServer } from "apollo-server-express";
 
-import { authors, books } from "./data";
-
-import { MyContext } from "./types/context";
-
 import { typeDefs, resolvers } from "./schema";
 
-(async () => {
-  const context = async (): Promise<MyContext> => ({
-    db: {
-      books,
-      authors,
-    },
-  });
+import context from "./context";
 
+(async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -26,6 +17,7 @@ import { typeDefs, resolvers } from "./schema";
       },
     },
     introspection: true,
+    tracing: true,
   });
 
   const app = express();
