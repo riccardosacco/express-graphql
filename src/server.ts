@@ -2,7 +2,7 @@ import express from "express";
 
 import dotenv from "dotenv";
 
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer, PubSub } from "apollo-server-express";
 
 import { typeDefs, resolvers } from "./schema";
 

@@ -28,6 +28,11 @@ const Resolvers = {
       return records;
     },
   },
+  Subscription: {
+    newCollection: {
+      subscribe: (parent: any, args: any, { pubsub }: Context) => {},
+    },
+  },
 };
 
 export default Resolvers;

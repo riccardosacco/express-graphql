@@ -27,6 +27,10 @@ const typeDefs = gql`
     createdAt: String!
     updatedAt: String!
   }
+
+  extend type Subscription {
+    newCollection: Collection!
+  }
 `;
 
 export default typeDefs;
