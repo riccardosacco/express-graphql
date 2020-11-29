@@ -1,10 +1,14 @@
 import express from "express";
 
+import dotenv from "dotenv";
+
 import { ApolloServer } from "apollo-server-express";
 
 import { typeDefs, resolvers } from "./schema";
 
 import context from "./context";
+
+dotenv.config();
 
 (async () => {
   const server = new ApolloServer({

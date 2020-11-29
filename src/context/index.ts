@@ -1,33 +1,16 @@
-import { authors, books } from "../data";
-
-import DataLoader from "dataloader";
+import { MongoClient, Db } from "mongodb";
 
 export type Context = {
-  db: {
-    books: object[];
-    authors: object[];
-  };
-  loaders: {
-    [key: string]: any;
-  };
+  db: Db;
 };
 
-const context = async (): Promise<Context> => ({
-  db: {
-    books,
-    authors,
-  },
-  loaders: {
-    author: new DataLoader(async (keys: any) => {
-      const authorMap: any = {};
-
-      authors.forEach((author) => {
-        authorMap[author.id] = author;
-      });
-
-      return keys.map((key: number) => authorMap[key]);
-    }),
-  },
-});
+const context = async () => {
+  const client = await MongoClient.connect(process.env.MONGO_URI as string, {
+    useUnifiedTopology: true,
+  });
+  return {
+    db: await client.db("crm"),
+  };
+};
 
 export default context;

@@ -1,8 +1,8 @@
 import { merge } from "lodash";
 
-import book from "./book/resolvers";
-import author from "./author/resolvers";
+import collection from "./collection/resolvers";
+import record from "./record/resolvers";
 
-const resolvers = merge(book, author);
+const resolvers = merge(collection, record);
 
 export default resolvers;

@@ -1,7 +1,7 @@
 import global from "./global/typeDefs";
-import book from "./book/typeDefs";
-import author from "./author/typeDefs";
+import collection from "./collection/typeDefs";
+import record from "./record/typeDefs";
 
-const typeDefs = [global, book, author];
+const typeDefs = [global, collection, record];
 
 export default typeDefs;
